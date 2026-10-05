@@ -12,7 +12,10 @@ btn_apagar.addEventListener('click', (e) => {
     }
 
     fetch(`http://localhost:3000/produto/${codProduto}`,{
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'authorization': localStorage.getItem('token')
+        }
     })
     .then(res => res.json())
     .then(dados => {

@@ -1,12 +1,12 @@
-let login_usuario = document.getElementById('login_usuario')
-let login_produto = document.getElementById('login_produto')
-let login_movimento = document.getElementById('login_movimento')
+// let login_usuario = document.getElementById('login_usuario')
+// let login_produto = document.getElementById('login_produto')
+// let login_movimento = document.getElementById('login_movimento')
 let token = localStorage.getItem('token')
 let nome = localStorage.getItem('nome')
 
 if(token){
-    if(login_usuario){
-        login_usuario.innerHTML = `
+    if(document.getElementById('login_usuario')){
+        document.getElementById('login_usuario').innerHTML = `
         <a href="./html/usuario_listar.html">Listar</a>&emsp;
         <a href="./html/usuario_consultar.html">Consultar</a>&emsp;
         <a href="./html/usuario_atualizar.html">Atualizar</a>&emsp;
@@ -15,8 +15,8 @@ if(token){
         <span class="titulo_menu">&emsp; Usuário: ${nome}</span>
         `
     }
-    if(login_produto){
-        login_produto.innerHTML = `
+    if(document.getElementById('login_produto')){
+        document.getElementById('login_produto').innerHTML = `
         <span class="titulo_menu">Produtos</span>&emsp;
         <a href="./html/produto_cadastrar.html">Cadastrar</a>&emsp;
         <a href="./html/produto_listar.html">Listar</a>&emsp;
@@ -26,8 +26,8 @@ if(token){
         <br><br><hr><br>
         `
     }
-    if(login_movimento){
-        login_movimento.innerHTML = `
+    if(document.getElementById('login_movimento')){
+        document.getElementById('login_movimento').innerHTML = `
         <span class="titulo_menu">Operações</span>&emsp;
         <a href="./html/movimento_cadastrar.html">Cadastrar Movimento</a>&emsp;
         <a href="./html/movimento_listar.html">Listar Movimento</a>&emsp;

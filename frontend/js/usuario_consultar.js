@@ -8,7 +8,9 @@ btn_consultar.addEventListener('click', (e) => {
     
     const codUsuario = document.getElementById('codUsuario').value
 
-    fetch(`http://localhost:3000/usuario/${codUsuario}`)
+    fetch(`http://localhost:3000/usuario/${codUsuario}`,{
+        headers: {"authorization":localStorage.getItem('token')}
+    })
     .then(res => res.json())
     .then(dados => {
 
@@ -39,7 +41,11 @@ btn_consultar_nome.addEventListener('click', (e) => {
     
     const nome = document.getElementById('nome').value
 
-    fetch(`http://localhost:3000/usuario/buscar/${nome}`)
+    fetch(`http://localhost:3000/usuario/buscar/${nome}`,{
+        headers: {
+            "authorization": localStorage.getItem('token')
+        }
+    })
     .then(res => res.json())
     .then(dados => {
 
@@ -73,7 +79,8 @@ function criarTbody(dados) {
         corpo += `<td>${el.codUsuario}</td>`
         corpo += `<td>${el.nome}</td>`
         corpo += `<td>${el.email}</td>`
-        corpo += `<td>${el.senha}</td>`
+        corpo += `<td>${el.cpf}</td>`
+        corpo += `<td>${el.telefone}</td>`
         corpo += `</tr>`
     })
     corpo += `</tbody>`
@@ -88,7 +95,8 @@ function criarThead() {
                 <th>Código</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Senha</th>
+                <th>CPF</th>
+                <th>Telefone</th>
             </tr>
         </thead>
     `

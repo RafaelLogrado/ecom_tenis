@@ -21,7 +21,8 @@ btn_cadastrar.addEventListener('click', (e) => {
     fetch('http://localhost:3000/produto', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "authorization":localStorage.getItem('token')
         },
         body: JSON.stringify(produto)
     })

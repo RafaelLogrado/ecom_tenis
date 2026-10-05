@@ -9,7 +9,10 @@ btn_apagar.addEventListener('click', (e) => {
     const codUsuario = document.getElementById('codUsuario').value
 
     fetch(`http://localhost:3000/usuario/${codUsuario}`,{
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            "authorization":localStorage.getItem('token')
+        }
     })
     .then(res => res.json())
     .then(dados => {

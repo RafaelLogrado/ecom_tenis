@@ -8,7 +8,9 @@ btn_consultar.addEventListener('click', (e) => {
     
     const codProduto = document.getElementById('codProduto').value
 
-    fetch(`http://localhost:3000/produto/${codProduto}`)
+    fetch(`http://localhost:3000/produto/${codProduto}`,{
+        headers: {"authorization":localStorage.getItem('token')}
+    })
     .then(res => res.json())
     .then(dados => {
 

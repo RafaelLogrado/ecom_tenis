@@ -4,7 +4,9 @@ let btn_listar = document.getElementById('btn_listar')
 btn_listar.addEventListener('click', (e) => {
     e.preventDefault()
 
-    fetch('http://localhost:3000/usuarios')
+    fetch('http://localhost:3000/usuarios',{
+        headers: {"authorization":localStorage.getItem('token')}
+    })
     .then(res => res.json())
     .then(dados => {
         resposta.innerHTML = ''
@@ -23,12 +25,14 @@ btn_listar.addEventListener('click', (e) => {
 function criarTbody(dados) {
     let corpo = ''
     corpo += `<tbody>`
+    console.log(dados)
     dados.forEach(el => {
         corpo += `<tr>`
         corpo += `<td>${el.codUsuario}</td>`
         corpo += `<td>${el.nome}</td>`
         corpo += `<td>${el.email}</td>`
-        corpo += `<td>${el.senha}</td>`
+        corpo += `<td>${el.cpf}</td>`
+        corpo += `<td>${el.telefone}</td>`
         corpo += `</tr>`
     })
     corpo += `</tbody>`
@@ -43,7 +47,8 @@ function criarThead() {
                 <th>Código</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Senha</th>
+                <th>CPF</th>
+                <th>Telefone</th>
             </tr>
         </thead>
     `

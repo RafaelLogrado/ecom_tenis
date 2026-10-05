@@ -23,7 +23,8 @@ btn_atualizar.addEventListener('click', (e) => {
     fetch(`http://localhost:3000/usuario/${codUsuario}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "authorization": localStorage.getItem('token')
         },
         body: JSON.stringify(usuarioAtualizado)
     })
